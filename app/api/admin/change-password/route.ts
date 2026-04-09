@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import fs from 'fs';
 import path from 'path';
+export const dynamic = 'force-dynamic';
+
 
 const CREDENTIALS_FILE = path.join(process.cwd(), 'config', 'credentials.json');
 

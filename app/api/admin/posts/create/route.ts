@@ -5,6 +5,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   const authenticated = await isAuthenticated();
 

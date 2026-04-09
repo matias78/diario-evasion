@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
+export const dynamic = 'force-dynamic';
+
 
 const COMMENTS_DIR = path.join(process.cwd(), 'data', 'comments');
 

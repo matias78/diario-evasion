@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { isAuthenticated } from '@/lib/auth';
 import fs from 'fs';
 import path from 'path';
+export const dynamic = 'force-dynamic';
+
 
 const colorsFilePath = path.join(process.cwd(), 'config', 'colors.json');
 
