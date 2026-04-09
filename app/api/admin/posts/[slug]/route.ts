@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isAuthenticated } from '@/lib/auth';
 import { getPostBySlug } from '@/lib/posts';
+import { isProduction, createOrUpdateFileInGitHub, deleteFileInGitHub } from '@/lib/github';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -51,9 +52,24 @@ export async function POST(
     };
 
     const fileContent = matter.stringify(content, frontmatter);
-    const filePath = path.join(process.cwd(), 'content', 'posts', `${slug}.md`);
+    const filePath = `content/posts/${slug}.md`;
 
-    fs.writeFileSync(filePath, fileContent, 'utf8');
+    if (isProduction()) {
+      // Use GitHub API in production
+      const success = await createOrUpdateFileInGitHub(
+        filePath,
+        fileContent,
+        `Update post: ${title}`
+      );
+
+      if (!success) {
+        return NextResponse.json({ error: 'Failed to update post in GitHub' }, { status: 500 });
+      }
+    } else {
+      // Use file system in local development
+      const localPath = path.join(process.cwd(), filePath);
+      fs.writeFileSync(localPath, fileContent, 'utf8');
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -66,10 +82,7 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  console.log('🗑️ DELETE request received');
-
   const authenticated = await isAuthenticated();
-  console.log('🔐 Authenticated:', authenticated);
 
   if (!authenticated) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -77,22 +90,32 @@ export async function DELETE(
 
   try {
     const { slug } = await params;
-    console.log('📄 Slug to delete:', slug);
+    const filePath = `content/posts/${slug}.md`;
 
-    const filePath = path.join(process.cwd(), 'content', 'posts', `${slug}.md`);
-    console.log('📂 File path:', filePath);
-    console.log('📁 File exists:', fs.existsSync(filePath));
+    if (isProduction()) {
+      // Use GitHub API in production
+      const success = await deleteFileInGitHub(
+        filePath,
+        `Delete post: ${slug}`
+      );
 
-    if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath);
-      console.log('✅ File deleted successfully');
-      return NextResponse.json({ success: true, message: 'Post deleted successfully' });
+      if (!success) {
+        return NextResponse.json({ error: 'Failed to delete post in GitHub' }, { status: 500 });
+      }
     } else {
-      console.log('❌ File not found');
-      return NextResponse.json({ error: 'Post not found' }, { status: 404 });
+      // Use file system in local development
+      const localPath = path.join(process.cwd(), filePath);
+
+      if (fs.existsSync(localPath)) {
+        fs.unlinkSync(localPath);
+      } else {
+        return NextResponse.json({ error: 'Post not found' }, { status: 404 });
+      }
     }
+
+    return NextResponse.json({ success: true, message: 'Post deleted successfully' });
   } catch (error) {
-    console.error('❌ Error deleting post:', error);
+    console.error('Error deleting post:', error);
     return NextResponse.json({
       error: 'Server error',
       details: error instanceof Error ? error.message : 'Unknown error'
