@@ -10,8 +10,6 @@ const postsDirectory = path.join(process.cwd(), 'content/posts');
 marked.setOptions({
   breaks: true,
   gfm: true,
-  mangle: false,
-  headerIds: false,
 });
 
 // Helper to detect if content is HTML or Markdown
