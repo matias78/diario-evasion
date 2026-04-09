@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --background: #2b2b2b;
+  --foreground: #e8e8e8;
+  --sidebar-bg: #1f1f1f;
+  --card-bg: #333333;
+  --border-color: #4a4a4a;
+  --accent-orange: #ff6b35;
+}
+
+.light {
+  --background: #f5f5f5;
+  --foreground: #1a1a1a;
+  --sidebar-bg: #ffffff;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --accent-orange: #ff6b35;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Lora', Georgia, serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .prose {
+    @apply text-gray-700;
+    line-height: 1.8;
+    font-size: 1.0625rem;
+  }
+
+  .dark .prose {
+    @apply text-gray-300;
+  }
+
+  .prose h1 {
+    @apply text-4xl font-bold mt-10 mb-6 text-gray-900;
+    font-family: 'Libre Baskerville', serif;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .dark .prose h1 {
+    @apply text-gray-100;
+  }
+
+  .prose h2 {
+    @apply text-2xl font-bold mt-8 mb-4 text-gray-900;
+    font-family: 'Libre Baskerville', serif;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  .dark .prose h2 {
+    @apply text-gray-100;
+  }
+
+  .prose h3 {
+    @apply text-xl font-semibold mt-6 mb-3 text-gray-800;
+    font-family: 'Libre Baskerville', serif;
+    line-height: 1.5;
+  }
+
+  .dark .prose h3 {
+    @apply text-gray-200;
+  }
+
+  .prose p {
+    @apply mb-6 text-gray-700;
+    line-height: 1.85;
+  }
+
+  .dark .prose p {
+    @apply text-gray-300;
+  }
+
+  .prose a {
+    @apply text-blue-600 hover:text-blue-700;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+
+  .dark .prose a {
+    @apply text-blue-400 hover:text-blue-300;
+  }
+
+  .prose a:hover {
+    border-bottom-color: currentColor;
+  }
+
+  .prose ul, .prose ol {
+    @apply ml-6 mb-6 text-gray-700;
+    line-height: 1.85;
+  }
+
+  .dark .prose ul,
+  .dark .prose ol {
+    @apply text-gray-300;
+  }
+
+  .prose li {
+    @apply mb-3;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 pl-6 italic my-8 text-gray-600;
+    border-color: var(--accent-orange);
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+
+  .dark .prose blockquote {
+    @apply text-gray-400;
+  }
+
+  .prose blockquote p {
+    @apply mb-4;
+  }
+
+  .prose img {
+    @apply rounded-lg my-8;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .dark .prose img {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .prose hr {
+    @apply my-8 border-gray-300;
+  }
+
+  .dark .prose hr {
+    @apply border-gray-700;
+  }
+
+  .prose strong {
+    @apply text-gray-900 font-semibold;
+  }
+
+  .dark .prose strong {
+    @apply text-gray-200;
+  }
+
+  .prose em {
+    @apply text-gray-700;
+  }
+
+  .dark .prose em {
+    @apply text-gray-300;
+  }
+
+  .prose code {
+    @apply bg-gray-200 text-gray-900 px-1.5 py-0.5 rounded text-sm;
+  }
+
+  .dark .prose code {
+    @apply bg-gray-800 text-gray-100;
+  }
+
+  .prose pre {
+    @apply bg-gray-100 text-gray-900 p-4 rounded-lg my-6 overflow-x-auto;
+  }
+
+  .dark .prose pre {
+    @apply bg-gray-800 text-gray-100;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: var(--accent-orange);
+  color: #1a1a1a;
+}
+
+/* Focus styles */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
+}
+
+/* Quill Editor Styles */
+.rich-text-editor .ql-toolbar {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color) !important;
+  border-bottom: none !important;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.rich-text-editor .ql-container {
+  background: var(--background);
+  border: 1px solid var(--border-color) !important;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.0625rem;
+}
+
+.rich-text-editor .ql-editor {
+  min-height: 500px;
+  color: var(--foreground);
+}
+
+.rich-text-editor .ql-editor.ql-blank::before {
+  color: #6b7280;
+  font-style: italic;
+}
+
+.rich-text-editor .ql-toolbar button,
+.rich-text-editor .ql-toolbar .ql-picker-label {
+  color: var(--foreground) !important;
+}
+
+.rich-text-editor .ql-toolbar button:hover,
+.rich-text-editor .ql-toolbar button.ql-active {
+  color: var(--accent-orange) !important;
+}
+
+.rich-text-editor .ql-stroke {
+  stroke: var(--foreground) !important;
+}
+
+.rich-text-editor .ql-fill {
+  fill: var(--foreground) !important;
+}
+
+.rich-text-editor .ql-toolbar button:hover .ql-stroke,
+.rich-text-editor .ql-toolbar button.ql-active .ql-stroke {
+  stroke: var(--accent-orange) !important;
+}
+
+.rich-text-editor .ql-toolbar button:hover .ql-fill,
+.rich-text-editor .ql-toolbar button.ql-active .ql-fill {
+  fill: var(--accent-orange) !important;
+}
+
+.rich-text-editor .ql-picker-options {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+.rich-text-editor .ql-picker-item {
+  color: var(--foreground);
+}
+
+.rich-text-editor .ql-picker-item:hover {
+  color: var(--accent-orange);
+}

@@ -1,0 +1,38 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#1a1410"/>
+
+  <!-- Ambient glow -->
+  <circle cx="600" cy="300" r="300" fill="#ff6b35" opacity="0.05"/>
+
+  <!-- Vinyl sleeve edge -->
+  <rect x="50" y="100" width="400" height="400" fill="#3a2d28" opacity="0.6"/>
+  <rect x="55" y="105" width="390" height="390" fill="#2a1f1a"/>
+
+  <!-- Vinyl record -->
+  <circle cx="700" cy="300" r="240" fill="#ff6b35"/>
+
+  <!-- Vinyl grooves -->
+  <circle cx="700" cy="300" r="230" fill="none" stroke="#000000" stroke-width="1" opacity="0.25"/>
+  <circle cx="700" cy="300" r="210" fill="none" stroke="#000000" stroke-width="1" opacity="0.25"/>
+  <circle cx="700" cy="300" r="190" fill="none" stroke="#000000" stroke-width="1" opacity="0.25"/>
+  <circle cx="700" cy="300" r="170" fill="none" stroke="#000000" stroke-width="1" opacity="0.25"/>
+  <circle cx="700" cy="300" r="150" fill="none" stroke="#000000" stroke-width="1" opacity="0.25"/>
+  <circle cx="700" cy="300" r="130" fill="none" stroke="#000000" stroke-width="1" opacity="0.25"/>
+  <circle cx="700" cy="300" r="110" fill="none" stroke="#000000" stroke-width="1" opacity="0.25"/>
+
+  <!-- Center label -->
+  <circle cx="700" cy="300" r="85" fill="#1a1410"/>
+  <circle cx="700" cy="300" r="80" fill="none" stroke="#ff8c42" stroke-width="3"/>
+
+  <!-- Decorative circles -->
+  <circle cx="700" cy="300" r="60" fill="none" stroke="#ff6b35" stroke-width="1" opacity="0.5"/>
+  <circle cx="700" cy="300" r="45" fill="none" stroke="#ff6b35" stroke-width="1" opacity="0.5"/>
+
+  <!-- Center hole -->
+  <circle cx="700" cy="300" r="10" fill="#0a0806"/>
+
+  <!-- Light reflection -->
+  <ellipse cx="620" cy="240" rx="100" ry="50" fill="#ffb380" opacity="0.15" transform="rotate(-25 620 240)"/>
+  <ellipse cx="640" cy="260" rx="60" ry="30" fill="#ffd9b3" opacity="0.2" transform="rotate(-25 640 260)"/>
+</svg>

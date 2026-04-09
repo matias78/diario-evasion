@@ -1,0 +1,39 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="600" fill="#1a1a1a"/>
+
+  <!-- Turntable base -->
+  <rect x="150" y="200" width="900" height="350" rx="10" fill="#2d2d2d" opacity="0.8"/>
+
+  <!-- Vinyl record -->
+  <circle cx="500" cy="375" r="180" fill="#ff6b35"/>
+
+  <!-- Vinyl grooves -->
+  <circle cx="500" cy="375" r="170" fill="none" stroke="#000000" stroke-width="1" opacity="0.3"/>
+  <circle cx="500" cy="375" r="150" fill="none" stroke="#000000" stroke-width="1" opacity="0.3"/>
+  <circle cx="500" cy="375" r="130" fill="none" stroke="#000000" stroke-width="1" opacity="0.3"/>
+  <circle cx="500" cy="375" r="110" fill="none" stroke="#000000" stroke-width="1" opacity="0.3"/>
+  <circle cx="500" cy="375" r="90" fill="none" stroke="#000000" stroke-width="1" opacity="0.3"/>
+
+  <!-- Center label -->
+  <circle cx="500" cy="375" r="70" fill="#1a1a1a"/>
+  <circle cx="500" cy="375" r="65" fill="none" stroke="#ff6b35" stroke-width="2"/>
+
+  <!-- Center hole -->
+  <circle cx="500" cy="375" r="8" fill="#0a0a0a"/>
+
+  <!-- Tonearm -->
+  <line x1="700" y1="250" x2="520" y2="360" stroke="#c0c0c0" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="700" cy="250" r="15" fill="#808080"/>
+  <circle cx="520" cy="360" r="12" fill="#606060"/>
+
+  <!-- Tonearm base -->
+  <rect x="680" y="220" width="40" height="60" rx="5" fill="#404040"/>
+
+  <!-- Power button -->
+  <circle cx="850" cy="300" r="20" fill="#2d2d2d" stroke="#666666" stroke-width="2"/>
+  <circle cx="850" cy="300" r="8" fill="#ff4500"/>
+
+  <!-- Ambient light -->
+  <ellipse cx="400" cy="320" rx="100" ry="40" fill="#ffffff" opacity="0.05"/>
+</svg>
